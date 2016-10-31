@@ -3,14 +3,15 @@
 	<h3>List of Channels</h3>
 	<ul>
 		<% @channels.each do |channel| %>
-			<li><a href='#'><%= channel.name %></a></li>
+			<li><a href="/channels/<%= channel.id %>"><%= channel.name %></a></li>
 		<% end %>
 	</ul>
+	<br>
     <% unless session[:user_id] %>
-      <p>For Premium content - Register as a user!</p>
+      <h4>For Premium content - Register as an user!</h4>
         <a href="users/new">Sign Up!</a>
         <%= erb :'_errors' %>
-      <p>Are you an User? Login!</p>
+      <h5>Are you an User? Login!</h5>
       <%= erb :'sessions/_login' %>
     <% end %>
 

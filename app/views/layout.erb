@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="/css/normalize.css?app=skills">
-  <link rel="stylesheet" href="/css/application.css?app=skills">
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js?app=skills"></script>
-
-  <title></title>
+  <title>Web Channels Subscriptions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script> -->
 </head>
 <body>
-  <%= yield %>
+
+<nav class="navbar navbar-default" style='background-color: lavender;'>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Channel Supscription App</a>
+    </div>
+    <span>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <!-- <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li> -->
+    </ul>
+    <ul class="nav navbar-nav navbar-right mar-t-1 pad-t-1 pad-b-2 pad-s-2">
+    <% if logged_in? %>
+     <a href="/logout"><span class="glyphicon glyphicon-log-out log"> </span></a>
+       <a href="/logout" class="btn btn-default btn-md">log out</a>
+       <a href="/users/<%= current_user.id %>"><%= current_user.first_name %></a>
+     <% else %>
+       <a href="/users/new" ><span class="glyphicon glyphicon-log-in log"></span></a>
+       <a href="/users/new" class="btn btn-default btn-md">sign up</a>
+     <a href="/login"><span class="glyphicon glyphicon-log-in log"></span></a>
+       <a href="/login" class="btn btn-default btn-md">log in</a>
+     <% end %>
+   </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+    <%= yield %>
+
+</div>
+
 </body>
 </html>

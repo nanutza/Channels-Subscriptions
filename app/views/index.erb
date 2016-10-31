@@ -1,23 +1,17 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+  <h1>Welcome to Nanutza Web Channels!</h1>
+    <% unless session[:user_id] %>
+      <p>Register as a user!</p>
+        <a href="users/new">Sign Up!</a>
+        <%= erb :'_errors' %>
+      <p>Login!</p>
+      <%= erb :'sessions/_login' %>
+    <% end %>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+    <% if session[:user_id] %>
+      <% @user = User.find(session[:user_id]) %>
+      <p> Hello <%= @user.first_name %> </p>
+      <h3> Welcome to the VIP - member's only area of the site! </h3>
+      <p><a href="logout"> Logout </a></p>
+    <% end %>
 </div>

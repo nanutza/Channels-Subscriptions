@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>New User Registration</h1>
+  <%= erb :'_errors' %>
+  <form action='/users' method ='post'>
+
+    <label for=username>First Name: </label>
+    <input type="text" name="user[first_name]" placeholder="first_name">
+
+    <label for=username>Last Name: </label>
+    <input type="text" name="user[last_name]" placeholder="last_name">
+
+    <label for=email>Email: </label>
+    <input type="text" name="user[email]" placeholder="email">
+
+    <label for=email>Password: </label>
+    <input type="password" name="user[password]" placeholder="password">
+
+    <label for=email>Password confirmation: </label>
+    <input type="password" name="password_confirmation" placeholder="confirm password">
+
+    <input type="submit" name="login" value="register new user">
+  </form>
+</div>

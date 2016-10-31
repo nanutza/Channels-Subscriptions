@@ -4,7 +4,7 @@ class CreateSubscriptions < ActiveRecord::Migration
       t.integer :user_id,  :null => false
       t.integer :channel_id, :null => false
 
-      t.timestamps
+      t.timestamps(null: false)
     end
 
     add_index :subscriptions, [:user_id, :channel_id], :unique => true

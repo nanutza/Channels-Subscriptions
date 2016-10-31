@@ -5,7 +5,7 @@ class CreateChannels < ActiveRecord::Migration
       t.string :callsign, :null => false
       t.decimal :price_per_month, :null => false
 
-      t.timestamps
+      t.timestamps(null: false)
     end
   end
 end

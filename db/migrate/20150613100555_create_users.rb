@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name, :null => false
       t.string :email, :null => false
       t.string :hashed_password, :null => false
-      t.timestamps
+      t.timestamps(null: false)
     end
     add_index :users, :email, :unique => true
   end

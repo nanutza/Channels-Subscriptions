@@ -24,11 +24,12 @@ get '/login' do
 end
 
 post '/login' do
-  user = User.find_by_email(params[:user][:email])
+ user = User.find_by_email(params[:user][:email])
   if user && user.authenticate(params[:user][:password])
     status 200
     session[:user_id] = user.id
-    redirect '/'
+    # redirect '/'
+    redirect '/users/#{@user.id}'
   else
     status 500
     @errors = ["incorrect email or password"]
@@ -44,7 +45,7 @@ get '/users/:id' do
     @channels = @user.channels.order(:name)
     erb :'/users/show'
   else
-    erb :'error_404'
+    erb :'index'
   end
 end
 

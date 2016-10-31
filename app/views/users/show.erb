@@ -1,0 +1,16 @@
+<div class="container user-dashboard-view">
+  <h2>Welcome, <%= @user.first_name %> <%= @user.last_name %>!</h2>
+
+  <h4>Your subscriptions: </h4>
+  <% if @channels %>
+    <ul>
+      <% @channels.each do |channel| %>
+        <li><a href="/channels/<%= channel.id %>"><%= channel.name %></a></li>
+      <% end %>
+    </ul>
+
+    <h4>Monthly Bill: $ <%= @user.total_monthly_bill %></h4>
+  <% else %>
+    <p>You aren't subscribed to any channels. Visit the <a href="/">homepage</a> for a list of available channels in your area.</p>
+  <% end %>
+</div>

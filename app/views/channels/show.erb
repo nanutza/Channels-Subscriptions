@@ -1,12 +1,18 @@
-<h3>Details for <%= @channel.name %></h3>
+<h3>Details for channel <%= @channel.name %> - <%= @channel.callsign %></h3>
 <ul>
   <li>Number of Subscribers:<br><%= @channel.total_subscribers %></li><br>
   <li>Price per month:<br>$<%= @channel.price_per_month %></li>
 </ul>
-<form action="/channels/<%= @channel.id %>" method="post">
-  <% if current_user && @subscribed %>
-    <input type="submit" name="submit" value='Unsubscribe!'>
-  <% else %>
-    <input type="submit" name="submit" value='Subscribe!'>
-  <% end %>
-</form>
+
+
+<% if current_user && subscribed? %>
+  <form class="channel-subscriptions" method="post" action="/channels/<%= @channel.id %>/subscriptions %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="unsubscribe">
+  </form>
+<% else %>
+  <form class="channel-subscriptions" method="post" action="/channels/<%= @channel.id %>/subscriptions">
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="subscribe">
+  </form>
+<% end %>

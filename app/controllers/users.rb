@@ -1,5 +1,5 @@
 get '/users' do
-  erb :index
+  redirect '/channels'
 end
 
 get '/users/new' do
@@ -28,8 +28,7 @@ post '/login' do
   if user && user.authenticate(params[:user][:password])
     status 200
     session[:user_id] = user.id
-    # redirect '/'
-    redirect '/users/#{@user.id}'
+    redirect "/users/#{user.id}"
   else
     status 500
     @errors = ["incorrect email or password"]
@@ -45,7 +44,7 @@ get '/users/:id' do
     @channels = @user.channels.order(:name)
     erb :'/users/show'
   else
-    erb :'index'
+    redirect '/channels'
   end
 end
 

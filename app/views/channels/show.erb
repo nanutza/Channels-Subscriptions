@@ -6,7 +6,7 @@
 
 
 <% if current_user && subscribed? %>
-  <form class="channel-subscriptions" method="post" action="/channels/<%= @channel.id %>/subscriptions %>">
+  <form class="channel-subscriptions" method="post" action="/channels/<%= @channel.id %>/subscriptions">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="unsubscribe">
   </form>

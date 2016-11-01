@@ -7,18 +7,19 @@
 		<% end %>
 	</ul>
 	<br>
-    <% unless session[:user_id] %>
+  <hr>
+
+    <% if logged_in? %>
+      <% @user = current_user %>
+      <h4> Hello <%= @user.first_name %> </h4>
+      <h3> Welcome to the VIP - member's only area of the site! </h3>
+      <p><a href="logout"> Logout </a></p>
+
+    <% else %>
       <h4>For Premium content - Register as an user!</h4>
         <a href="users/new">Sign Up!</a>
         <%= erb :'_errors' %>
       <h5>Are you an User? Login!</h5>
       <%= erb :'sessions/_login' %>
-    <% end %>
-
-    <% if session[:user_id] %>
-      <% @user = User.find(session[:user_id]) %>
-      <p> Hello <%= @user.first_name %> </p>
-      <h3> Welcome to the VIP - member's only area of the site! </h3>
-      <p><a href="logout"> Logout </a></p>
     <% end %>
 </div>

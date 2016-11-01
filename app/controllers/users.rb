@@ -1,5 +1,5 @@
 get '/users' do
-  redirect '/channels'
+  redirect :'channels'
 end
 
 get '/users/new' do
@@ -11,9 +11,9 @@ post '/users' do
   if @user.save && params[:user][:password] == params[:password_confirmation]
     status 200
     session[:user_id] = @user.id
-    redirect '/users'
+    redirect "/users/#{@user.id}"
   else
-    status 500
+    status 400
     @errors = @user.errors.full_messages
     erb :'users/new'
   end
@@ -30,7 +30,7 @@ post '/login' do
     session[:user_id] = user.id
     redirect "/users/#{user.id}"
   else
-    status 500
+    status 400
     @errors = ["incorrect email or password"]
     erb :'/sessions/_login'
   end

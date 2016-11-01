@@ -4,7 +4,7 @@
   <li>Price per month:<br>$<%= @channel.price_per_month %></li>
 </ul>
 
-
+<hr>
 <% if current_user && subscribed? %>
   <form class="channel-subscriptions" method="post" action="/channels/<%= @channel.id %>/subscriptions">
     <input type="hidden" name="_method" value="delete">
@@ -12,7 +12,6 @@
   </form>
 <% else %>
   <form class="channel-subscriptions" method="post" action="/channels/<%= @channel.id %>/subscriptions">
-    <input type="hidden" name="_method" value="put">
     <input type="submit" value="subscribe">
   </form>
 <% end %>

@@ -12,37 +12,46 @@
 
 </head>
 <body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+            <a class="navbar-brand" href="/">Nanutza Web Channels</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+              <a href="/logout"><span class="glyphicon glyphicon-log-out log"> </span></a>
+              <a href="/logout" class="btn btn-default btn-md">log out</a>
+              <a href="/users/<%= current_user.id %>"><%= current_user.first_name %></a>
+            <% else %>
+              <a href="/users/new" ><span class="glyphicon glyphicon-log-in log"></span></a>
+              <a href="/users/new" class="btn btn-default btn-md">sign up</a>
+              <a href="/login"><span class="glyphicon glyphicon-log-in log"></span></a>
+              <a href="/login" class="btn btn-default btn-md">log in</a>
 
-<nav class="navbar navbar-default" style='background-color: lavender;'>
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Nanutza Web Channels</a>
+            <% end %>
+        </ul>
+      </div>
     </div>
-    <span>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Home</a></li>
-      <!-- <li><a href="#">Page 1</a></li> -->
-    </ul>
-    <ul class="nav navbar-nav navbar-right mar-t-1 pad-t-1 pad-b-2 pad-s-2">
-    <% if logged_in? %>
-     <a href="/logout"><span class="glyphicon glyphicon-log-out log"> </span></a>
-       <a href="/logout" class="btn btn-default btn-md">log out</a>
-       <a href="/users/<%= current_user.id %>"><%= current_user.first_name %></a>
-     <% else %>
-       <a href="/users/new" ><span class="glyphicon glyphicon-log-in log"></span></a>
-       <a href="/users/new" class="btn btn-default btn-md">sign up</a>
-     <a href="/login"><span class="glyphicon glyphicon-log-in log"></span></a>
-       <a href="/login" class="btn btn-default btn-md">log in</a>
-     <% end %>
-   </ul>
+  </nav>
+
+  <div class="container-fluid text-center">
+      <div class="col-sm-2 text-left">
+      </div>
+      <div class="col-sm-8 text-left">
+          <%= yield %>
+      </div>
+      <div class="col-sm-2 text-left">
+      </div>
   </div>
-</nav>
-
-<div class="container">
-
-    <%= yield %>
-
-</div>
 
 </body>
 </html>

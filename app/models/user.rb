@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
   end
 
   def total_monthly_bill
-    self.channels.reduce(0) { |total, channel| total + channel.price_per_month.to_int }
+    self.channels.pluck(:price_per_month).sum.round(2)  #replace with more efficient AR methods
+    # self.channels.reduce(0) { |total, channel| total + channel.price_per_month.to_int }
   end
 
 end

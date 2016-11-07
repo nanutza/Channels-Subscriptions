@@ -1,5 +1,5 @@
 get '/users' do
-  erb :index
+  redirect :'channels'
 end
 
 get '/users/new' do
@@ -11,9 +11,9 @@ post '/users' do
   if @user.save && params[:user][:password] == params[:password_confirmation]
     status 200
     session[:user_id] = @user.id
-    redirect '/users'
+    redirect "/users/#{@user.id}"
   else
-    status 500
+    status 400
     @errors = @user.errors.full_messages
     erb :'users/new'
   end
@@ -24,13 +24,13 @@ get '/login' do
 end
 
 post '/login' do
-  user = User.find_by_email(params[:user][:email])
+ user = User.find_by_email(params[:user][:email])
   if user && user.authenticate(params[:user][:password])
     status 200
     session[:user_id] = user.id
-    redirect '/'
+    redirect "/users/#{user.id}"
   else
-    status 500
+    status 400
     @errors = ["incorrect email or password"]
     erb :'/sessions/_login'
   end
@@ -44,7 +44,7 @@ get '/users/:id' do
     @channels = @user.channels.order(:name)
     erb :'/users/show'
   else
-    erb :'error_404'
+    redirect '/channels'
   end
 end
 

@@ -1,4 +1,4 @@
-## Phase Two Self Assessment Challenge
+## Channels and Subscriptions
 
 Welcome to the Phase Two Self Assessment. At this point in Phase Two, you should have the skills to complete this challenge. Please give yourself a time box of 3 hours to work on this. Commit early and often.
 
@@ -12,7 +12,7 @@ Good luck!
 
 By now you should be familiar with creating basic web applications using Sinatra. In this challenge you'll be building a simple channel subscription application for subscribers of a cable company. This will give you a chance to demonstrate your proficiency with the web by writing code for models, views, and controllers as well as authentication, basic HTML, and some CSS.
 
-The problem is broken into multiple parts. You should complete each part before moving on to the next. We've given approximate timeboxes for each part to help you make good progress. 
+The problem is broken into multiple parts. You should complete each part before moving on to the next. We've given approximate timeboxes for each part to help you make good progress.
 
 ### Release 1: Authentication (Timing ~ 60 min)
 

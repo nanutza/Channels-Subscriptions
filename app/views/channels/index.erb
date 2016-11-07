@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Welcome to Nanutza Web Channels!</h1>
+	<h3>List of Channels</h3>
+	<ul>
+		<% @channels.each do |channel| %>
+			<li><a href="/channels/<%= channel.id %>"><%= channel.name %></a></li>
+		<% end %>
+	</ul>
+	<br>
+  <hr>
+
+    <% if logged_in? %>
+      <% @user = current_user %>
+      <h4> Hello <%= @user.first_name %> </h4>
+      <h3> Welcome to the VIP - member's only area of the site! </h3>
+      <p><a href="logout"> Logout </a></p>
+
+    <% else %>
+      <h4>For Premium content - Register as an user!</h4>
+        <a href="users/new">Sign Up!</a>
+        <%= erb :'_errors' %>
+      <h5>Are you an User? Login!</h5>
+      <%= erb :'sessions/_login' %>
+    <% end %>
+</div>
